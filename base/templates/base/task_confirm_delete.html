@@ -1,0 +1,6 @@
+<h4><a href="{% url 'tasks' %}"><-back</a></h4>
+<form method="POST">
+    {% csrf_token %}
+    <p>are you sure to delete this method {{task}} </p>
+    <input type="submit" value="delete">
+</form>

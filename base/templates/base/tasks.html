@@ -1,0 +1,32 @@
+<style>
+    a{
+        text-decoration: none;
+    }
+</style>
+{% if request.user.is_authenticated %}
+    <p>user : {{request.user}} </p>
+    <a href="">logout</a>
+{%else%}
+    <a href=""> register now</a>
+{%endif%}
+<hr>
+<h1>to do list </h1>
+<h3><a href="{%url 'task-create'%}"> create tasks</a></h3>
+<table aria-colspan="2" >
+    <tr>
+        <th>Items</th>
+        <th>views</th>
+        <th>updates</th>
+        <th>Deletes</th>
+    </tr>
+    {% for task in Tasks%}
+    <tr>
+        <td> {{task.title}} </td>
+        <td> <a href=" {% url 'task' task.id %} ">show</a> </td>
+        <td><a href=" {% url 'task-update' task.id %} ">update</a></td>
+        <td><a href="{% url 'task-delete' task.id %}">delete</a></td>
+    </tr>
+    {%empty%}
+    <td>there is nothing in the list </td>
+    {% endfor %}
+</table>

@@ -1,0 +1,7 @@
+<h3>welcome to the create task page </h3>
+<h4><a href="{% url 'tasks' %}"><-back</a></h4>
+<form  method="POST" action="">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="submit">
+</form>
